@@ -25,6 +25,8 @@ function render() {
 }
 
 function main() {
+  model.init(window.__INITIAL_DATA__);
+
   render();
 }
 
