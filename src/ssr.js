@@ -11,7 +11,7 @@ export const generateHTML = (model) => `
       <div id="root">
         ${Page(model.items)}
       </div>
-      <script src="./src/script.js"></script>
+      <script src="./src/script.js" type="module"></script>
     </body>
   </html>
 `
