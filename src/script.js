@@ -8,15 +8,14 @@ document.getElementById("change").onclick = () => {
   }
 }
 
-document.getElementById("write").onclick = async () => {
-  const paragraph = document.getElementById("paragraph");
-
-  const paragraphText = await fetch("/api/content", {
-    method: "GET",
+document.getElementById("add").onclick = async () => {
+  await fetch("/api/items", {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(async (response) => await response.json().then((data) => data));
-
-  paragraph.append(paragraphText.data);
+    body: JSON.stringify({
+      item: "랜덤 아이템",
+    })
+  }).then(() => window.location.reload());
 }

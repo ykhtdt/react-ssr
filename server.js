@@ -1,5 +1,7 @@
 import express from "express";
+
 import { generateHTML } from "./src/ssr.js";
+import { model } from "./src/model.js";
 
 const app = express();
 
@@ -10,14 +12,14 @@ app.use(express.json());
 app.use("/src", express.static("./src"));
 
 app.get("/", (req, res) => {
-  return res.send(generateHTML());
+  res.send(generateHTML(model));
 });
 
-app.get("/api/content", (req, res) => {
-  const content = "서버에서 보내주는 텍스트";
-  return res.json({
-    data: content,
-  });
+app.post("/api/items", (req, res) => {
+  const item = req.body.item;
+  model.addItem(item);
+
+  res.status(201).send();
 });
 
 app.listen(3000, () => {

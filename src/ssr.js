@@ -1,6 +1,6 @@
-import { Page } from './app/page.js';
+import { Page } from './page.js';
 
-export const generateHTML = () => `
+export const generateHTML = (model) => `
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -9,7 +9,7 @@ export const generateHTML = () => `
     </head>
     <body>
       <div id="root">
-        ${Page()}
+        ${Page(model.items)}
       </div>
       <script src="./src/script.js"></script>
     </body>
