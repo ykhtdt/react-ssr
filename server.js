@@ -15,11 +15,10 @@ app.get("/", (req, res) => {
   res.send(generateHTML(model));
 });
 
-app.post("/api/items", (req, res) => {
-  const item = req.body.item;
-  model.addItem(item);
+app.put("/api/items", (req, res) => {
+  model.init({ items: req.body.items });
 
-  res.status(201).send();
+  res.status(200).send(model.items);
 });
 
 app.listen(3000, () => {
