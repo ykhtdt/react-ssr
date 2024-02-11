@@ -1,8 +1,8 @@
 import { Page } from './page.js';
 import { model } from './model.js';
 
-async function updateItems(items) {
-  const res = await fetch("/api/items", {
+async function updateServerItem(items) {
+  await fetch("/api/items", {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -11,14 +11,6 @@ async function updateItems(items) {
       items: items,
     })
   });
-
-  return await res.json();
-}
-
-async function updateServerItem() {
-  const updatedItems = await updateItems(model.items);
-  
-  model.init({ items: updatedItems });
 }
 
 function render() {
@@ -28,7 +20,7 @@ function render() {
 
   root.querySelector("#add").onclick = async () => {
     model.addItem("랜덤 아이템");
-    updateServerItem().then(() => render());
+    updateServerItem(model.items).then(() => render());
   }
 }
 
