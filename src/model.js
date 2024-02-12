@@ -8,4 +8,4 @@ export const model = {
   addItem(item) {
     this.items.push(item);
   },
-}
+};

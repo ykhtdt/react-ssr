@@ -15,8 +15,19 @@ app.get("/", (req, res) => {
   res.send(generateHTML(model));
 });
 
-app.put("/api/items", (req, res) => {
+app.post("/api/init-items", (req, res) => {
   model.init({ items: req.body.items });
+
+  res.status(201).send();
+});
+
+app.get("/api/get-items", (req, res) => {
+  res.status(200).send(model.items);
+});
+
+app.put("/api/put-items", (req, res) => {
+  model.addItem(req.body.items);
+  model.init({ items: model.items });
 
   res.status(200).send(model.items);
 });

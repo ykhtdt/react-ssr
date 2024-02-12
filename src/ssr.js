@@ -12,7 +12,7 @@ export const generateHTML = (model) => `
         ${Page(model.items)}
       </div>
       <script>window.__INITIAL_DATA__=${JSON.stringify({ items: model.items })}</script>
-      <script src="./src/script.js" type="module"></script>
+      <script src="./src/main.js" type="module"></script>
     </body>
   </html>
 `
